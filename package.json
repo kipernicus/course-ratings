@@ -1,0 +1,22 @@
+{
+  "name": "course-ratings",
+  "version": "1.0.0",
+  "description": "Sample app consuming an AWS microservice",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kipernicus/course-ratings.git"
+  },
+  "keywords": [
+    "AWS",
+    "microservice"
+  ],
+  "author": "kipernicus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kipernicus/course-ratings/issues"
+  },
+  "homepage": "https://github.com/kipernicus/course-ratings#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
