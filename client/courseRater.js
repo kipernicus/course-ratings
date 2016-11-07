@@ -11,21 +11,25 @@ export default class extends React.Component {
         {id: '23456', name: 'Intermediate Intermediaries'},
         {id: '34567', name: 'Advanced Advancements'}
       ],
-      ratings: [
-        {courseId: '12345', rating: 3}
-      ]
+      ratings: [ ]
     };
   }
 
-  onStarClick(nextValue, prevValue, name) {
-    this.setState({ratings: [...this.state.ratings, { course: name, rating: nextValue }]})
+  addCourse(e) {
+    this.setState({ratings: [...this.state.ratings, { courseId: e.target.value, rating: 0 }]})
+  }
+
+  rateCourse(nextValue, prevValue, name) {
+    const rating = this.state.ratings.find((rating) => rating.courseId === name);
+    rating.rating = nextValue;
+    this.setState({ratings: this.state.ratings})
   }
 
   render() {
     return (
       <ul style={{listStyle: 'none'}}>
         <li>
-          <select>
+          <select style={{marginBottom: '20px'}} onChange={this.addCourse.bind(this)}>
             <option>Pick a Course</option>
             {
               this.state.courses.map( (course) => {
@@ -36,13 +40,14 @@ export default class extends React.Component {
         </li>
         {
           this.state.ratings.map( (rating) => {
-            const courseName = this.state.courses.find((course) => rating.courseId === course.id).name;
+            const course = this.state.courses.find((course) => rating.courseId === course.id);
+            const courseName = course ? course.name : 'No course found';
             return <li key={rating.courseId}>
-              <span style={{marginRight: '10px'}}>{courseName}</span>
+              <span style={{float: 'left', width: '200px'}}>{courseName}</span>
               <StarRatingComponent
                 name={rating.courseId}
                 value={rating.rating}
-                onStarClick={this.onStarClick.bind(this)}
+                onStarClick={this.rateCourse.bind(this)}
               />
             </li>
           })
