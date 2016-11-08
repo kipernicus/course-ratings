@@ -11,8 +11,13 @@ export default class extends React.Component {
         {id: '23456', name: 'Intermediate Intermediaries'},
         {id: '34567', name: 'Advanced Advancements'}
       ],
-      ratings: [ ]
+      ratings: [ ],
+      email: ''
     };
+  }
+
+  updateEmail(e) {
+    this.setState({ 'email': e.target.value , 'ratings': []})
   }
 
   addCourse(e) {
@@ -28,6 +33,9 @@ export default class extends React.Component {
   render() {
     return (
       <ul style={{listStyle: 'none'}}>
+        <li style={{marginBottom: '20px'}}>
+          Enter your email <input type="text" onChange={this.updateEmail.bind(this)}/>
+        </li>
         <li>
           <select style={{marginBottom: '20px'}} onChange={this.addCourse.bind(this)}>
             <option>Pick a Course</option>
