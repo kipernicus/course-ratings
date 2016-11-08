@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/kipernicus/course-ratings#readme",
   "dependencies": {
+    "axios": "^0.15.2",
     "babel-core": "^6.18.2",
     "express": "^4.14.0",
     "react": "^15.3.2",
