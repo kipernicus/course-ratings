@@ -23,7 +23,7 @@ export default class extends React.Component {
   }
 
   rateCourse(nextValue, prevValue, id) {
-    axios.put('https://facj26md10.execute-api.us-west-2.amazonaws.com/dev/ratings/MONSTERS/${id}', { 'rating': nextValue, 'email': this.state.email })
+    axios.put(`https://facj26md10.execute-api.us-west-2.amazonaws.com/dev/ratings/MONSTERS/${id}`, { 'rating': nextValue, 'email': this.state.email })
       .then(() => {
         const rating = this.state.ratings.find((rating) => rating.courseId === id);
         rating.rating = nextValue;
